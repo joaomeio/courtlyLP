@@ -1,87 +1,92 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import appScreenshot from '../image.png';
+import logoImg from '../Design sem nome.png';
+import scheduleScreenshot from '../schedule.png';
+import studentScreenshot from '../student.png';
+
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 
 const CalendarIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/>
-    <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+    <rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" />
+    <line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
   </svg>
 );
 
 const UsersIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-    <circle cx="9" cy="7" r="4"/>
-    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
   </svg>
 );
 
 const CreditCardIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+    <rect x="1" y="4" width="22" height="16" rx="2" /><line x1="1" y1="10" x2="23" y2="10" />
   </svg>
 );
 
 const BookIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
   </svg>
 );
 
 const BarChartIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+    <line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" />
   </svg>
 );
 
 const LayoutIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="3" y="3" width="18" height="18" rx="2"/>
-    <line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>
+    <rect x="3" y="3" width="18" height="18" rx="2" />
+    <line x1="3" y1="9" x2="21" y2="9" /><line x1="9" y1="21" x2="9" y2="9" />
   </svg>
 );
 
 const CheckIcon = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="20 6 9 17 4 12"/>
+    <polyline points="20 6 9 17 4 12" />
   </svg>
 );
 
 const ArrowRightIcon = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+    <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
   </svg>
 );
 
 const GreenCheck = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-    <circle cx="12" cy="12" r="12" fill="#66b319"/>
-    <polyline points="6 12 10 16 18 8" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <circle cx="12" cy="12" r="12" fill="#66b319" />
+    <polyline points="6 12 10 16 18 8" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 const GrayX = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-    <circle cx="12" cy="12" r="11" fill="none" stroke="#e2e8f0" strokeWidth="1.5"/>
-    <line x1="8.5" y1="8.5" x2="15.5" y2="15.5" stroke="#cbd5e1" strokeWidth="1.5" strokeLinecap="round"/>
-    <line x1="15.5" y1="8.5" x2="8.5" y2="15.5" stroke="#cbd5e1" strokeWidth="1.5" strokeLinecap="round"/>
+    <circle cx="12" cy="12" r="11" fill="none" stroke="#e2e8f0" strokeWidth="1.5" />
+    <line x1="8.5" y1="8.5" x2="15.5" y2="15.5" stroke="#cbd5e1" strokeWidth="1.5" strokeLinecap="round" />
+    <line x1="15.5" y1="8.5" x2="8.5" y2="15.5" stroke="#cbd5e1" strokeWidth="1.5" strokeLinecap="round" />
   </svg>
 );
 
 const TennisBallIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-    <circle cx="12" cy="12" r="10"/>
-    <path d="M2.5 12a9.5 9.5 0 0 1 4.5-8 9.5 9.5 0 0 1 0 16 9.5 9.5 0 0 1-4.5-8z"/>
+    <circle cx="12" cy="12" r="10" />
+    <path d="M2.5 12a9.5 9.5 0 0 1 4.5-8 9.5 9.5 0 0 1 0 16 9.5 9.5 0 0 1-4.5-8z" />
   </svg>
 );
 
 const ImageIcon = () => (
   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="3" y="3" width="18" height="18" rx="2"/>
-    <circle cx="8.5" cy="8.5" r="1.5"/>
-    <polyline points="21 15 16 10 5 21"/>
+    <rect x="3" y="3" width="18" height="18" rx="2" />
+    <circle cx="8.5" cy="8.5" r="1.5" />
+    <polyline points="21 15 16 10 5 21" />
   </svg>
 );
 
@@ -93,23 +98,23 @@ function CourtDecoration() {
     <div className="court-decoration" aria-hidden="true">
       <svg viewBox="0 0 440 280" fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Doubles boundary */}
-        <rect x="12" y="12" width="416" height="256" stroke="currentColor" strokeWidth="1.5"/>
+        <rect x="12" y="12" width="416" height="256" stroke="currentColor" strokeWidth="1.5" />
         {/* Net */}
-        <line x1="12" y1="140" x2="428" y2="140" stroke="currentColor" strokeWidth="2.5"/>
+        <line x1="12" y1="140" x2="428" y2="140" stroke="currentColor" strokeWidth="2.5" />
         {/* Singles sidelines */}
-        <line x1="66" y1="12" x2="66" y2="268" stroke="currentColor" strokeWidth="1"/>
-        <line x1="374" y1="12" x2="374" y2="268" stroke="currentColor" strokeWidth="1"/>
+        <line x1="66" y1="12" x2="66" y2="268" stroke="currentColor" strokeWidth="1" />
+        <line x1="374" y1="12" x2="374" y2="268" stroke="currentColor" strokeWidth="1" />
         {/* Service lines */}
-        <line x1="66" y1="76" x2="374" y2="76" stroke="currentColor" strokeWidth="1"/>
-        <line x1="66" y1="204" x2="374" y2="204" stroke="currentColor" strokeWidth="1"/>
+        <line x1="66" y1="76" x2="374" y2="76" stroke="currentColor" strokeWidth="1" />
+        <line x1="66" y1="204" x2="374" y2="204" stroke="currentColor" strokeWidth="1" />
         {/* Center service line */}
-        <line x1="220" y1="76" x2="220" y2="204" stroke="currentColor" strokeWidth="1"/>
+        <line x1="220" y1="76" x2="220" y2="204" stroke="currentColor" strokeWidth="1" />
         {/* Center marks */}
-        <line x1="215" y1="12" x2="225" y2="12" stroke="currentColor" strokeWidth="2"/>
-        <line x1="215" y1="268" x2="225" y2="268" stroke="currentColor" strokeWidth="2"/>
+        <line x1="215" y1="12" x2="225" y2="12" stroke="currentColor" strokeWidth="2" />
+        <line x1="215" y1="268" x2="225" y2="268" stroke="currentColor" strokeWidth="2" />
         {/* Net posts */}
-        <circle cx="12" cy="140" r="3.5" fill="currentColor"/>
-        <circle cx="428" cy="140" r="3.5" fill="currentColor"/>
+        <circle cx="12" cy="140" r="3.5" fill="currentColor" />
+        <circle cx="428" cy="140" r="3.5" fill="currentColor" />
       </svg>
     </div>
   );
@@ -124,7 +129,7 @@ function Placeholder({ name, style = {}, mobileSrc, desktopSrc }) {
   if (mobileSrc || desktopSrc) {
     return (
       <picture style={{ display: 'block', width: '100%', ...style }}>
-        {mobileSrc  && <source media="(max-width: 767px)" srcSet={mobileSrc} />}
+        {mobileSrc && <source media="(max-width: 767px)" srcSet={mobileSrc} />}
         {desktopSrc && <source media="(min-width: 768px)" srcSet={desktopSrc} />}
         <img
           src={desktopSrc || mobileSrc}
@@ -152,8 +157,7 @@ function Navbar({ scrolled }) {
     <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
       <div className="container nav-container">
         <div className="logo-area">
-          <div className="logo-icon"><TennisBallIcon /></div>
-          <span className="logo-text">Courtly</span>
+          <img src={logoImg} alt="Courtly" style={{ height: '36px', width: 'auto' }} />
         </div>
         <div className="nav-links">
           <a href="#features">Features</a>
@@ -178,7 +182,7 @@ function Hero() {
       <div className="container hero-inner">
         <div className="hero-content">
           <div className="hero-eyebrow reveal-on-scroll">
-            <span className="badge">Tennis Academy Software</span>
+            <span className="badge">#1 Tennis Coaching App</span>
           </div>
           <h1 className="hero-title">
             <span className="title-line">
@@ -197,17 +201,10 @@ function Hero() {
             </a>
             <a href="#demo" className="btn btn-ghost">Watch demo</a>
           </div>
-          <div className="trust-badges reveal-on-scroll" style={{ animationDelay: '0.25s' }}>
-            <span><CheckIcon /> No credit card</span>
-            <span className="sep" />
-            <span><CheckIcon /> Free to start</span>
-            <span className="sep" />
-            <span><CheckIcon /> Cancel anytime</span>
-          </div>
         </div>
         <div className="hero-visual reveal-on-scroll" style={{ animationDelay: '0.1s' }}>
           <div className="hero-visual-wrapper">
-            <Placeholder name="APP_SCREENSHOT_HERO" />
+            <img src={appScreenshot} alt="Courtly App" className="mockup-img" />
           </div>
         </div>
       </div>
@@ -219,10 +216,10 @@ function Hero() {
 
 function StatsBar() {
   const stats = [
-    { value: "250+",  label: "Preset drills" },
-    { value: "100%",  label: "Mobile ready"  },
-    { value: "14-day",label: "Free trial"    },
-    { value: "1 min", label: "Setup time"    },
+    { value: "250+", label: "Preset drills" },
+    { value: "100%", label: "Mobile ready" },
+    { value: "Free", label: "Free to start" },
+    { value: "1 min", label: "Setup time" },
   ];
   return (
     <section className="stats-bar reveal-on-scroll">
@@ -242,12 +239,12 @@ function StatsBar() {
 
 function FeaturesGrid() {
   const features = [
-    { icon: <CalendarIcon />,   title: "Smart Scheduling",   desc: "Automate conflict-free bookings and court assignments effortlessly." },
-    { icon: <UsersIcon />,      title: "Student Management", desc: "Track progress, attendance, and skill development profiles in one place." },
-    { icon: <CreditCardIcon />, title: "Payment Tracking",   desc: "Integrated billing and invoice management to ensure you get paid on time." },
-    { icon: <BookIcon />,       title: "250+ Drill Library", desc: "Access a massive library of interactive tennis drills and lesson plans." },
-    { icon: <BarChartIcon />,   title: "Analytics",          desc: "Visualize your academy's growth, revenue, and court utilization." },
-    { icon: <LayoutIcon />,     title: "Court Management",   desc: "Easily manage availability for multiple facilities and court surfaces." },
+    { icon: <CalendarIcon />, title: "Smart Scheduling", desc: "Automate conflict-free bookings and court assignments effortlessly." },
+    { icon: <UsersIcon />, title: "Student Management", desc: "Track progress, attendance, and skill development profiles in one place." },
+    { icon: <CreditCardIcon />, title: "Payment Tracking", desc: "Integrated billing and invoice management to ensure you get paid on time." },
+    { icon: <BookIcon />, title: "250+ Drill Library", desc: "Access a massive library of interactive tennis drills and lesson plans." },
+    { icon: <BarChartIcon />, title: "Analytics", desc: "Visualize your academy's growth, revenue, and court utilization." },
+    { icon: <LayoutIcon />, title: "Court Management", desc: "Easily manage availability for multiple facilities and court surfaces." },
   ];
   return (
     <section id="features" className="features-section">
@@ -284,11 +281,11 @@ function AppScreenshots() {
         </div>
         <div className="screenshots-grid">
           <div className="screenshot-col reveal-on-scroll">
-            <Placeholder name="APP_SCREENSHOT_SCHEDULE" />
+            <img src={scheduleScreenshot} alt="Schedule" className="mockup-img" />
             <p className="screenshot-caption">Visual weekly scheduling with drag-and-drop</p>
           </div>
           <div className="screenshot-col reveal-on-scroll" style={{ animationDelay: '0.1s' }}>
-            <Placeholder name="APP_SCREENSHOT_STUDENTS" />
+            <img src={studentScreenshot} alt="Students" className="mockup-img" />
             <p className="screenshot-caption">Detailed student skill progression tracking</p>
           </div>
         </div>
@@ -300,20 +297,20 @@ function AppScreenshots() {
 // ─── Pricing ──────────────────────────────────────────────────────────────────
 
 const FEATURES = [
-  { text: "Up to 5 Students"               },
-  { text: "25 Preset Drills"               },
-  { text: "Basic Calendar view"            },
+  { text: "Up to 5 Students" },
+  { text: "25 Preset Drills" },
+  { text: "Basic Calendar view" },
   { text: "Unlimited Students & Contacts", proOnly: true },
   { text: "Full 250+ Drill Library & Custom", proOnly: true },
-  { text: "Recurring Lessons & Waitlist",  proOnly: true },
-  { text: "Court & Group Management",      proOnly: true },
-  { text: "Payment & Income Tracking",     proOnly: true },
+  { text: "Recurring Lessons & Waitlist", proOnly: true },
+  { text: "Court & Group Management", proOnly: true },
+  { text: "Payment & Income Tracking", proOnly: true },
 ];
 
 function Pricing() {
   const [isAnnual, setIsAnnual] = useState(true);
   const monthlyPrice = isAnnual ? 19 : 29;
-  const annualTotal  = 19 * 12;
+  const annualTotal = 19 * 12;
 
   return (
     <section id="pricing" className="pricing-section">
@@ -416,8 +413,7 @@ function Footer() {
     <footer className="footer">
       <div className="container footer-inner">
         <div className="logo-area">
-          <div className="logo-icon"><TennisBallIcon /></div>
-          <span className="logo-text">Courtly</span>
+          <img src={logoImg} alt="Courtly" style={{ height: '32px' }} />
         </div>
         <p className="footer-copyright">© {new Date().getFullYear()} Courtly. All rights reserved.</p>
         <div className="footer-links">
