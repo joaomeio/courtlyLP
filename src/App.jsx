@@ -4,6 +4,7 @@ import appScreenshot from '../image.png';
 import logoImg from '../Design sem nome.png';
 import scheduleScreenshot from '../schedule.png';
 import studentScreenshot from '../student.png';
+import coachImg from '../imagem coach.png';
 
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
@@ -161,8 +162,8 @@ function Navbar({ scrolled }) {
         </div>
         <div className="nav-links">
           <a href="#features">Features</a>
-          <a href="#pricing">Pricing</a>
           <a href="#about">About</a>
+          <a href="#pricing">Pricing</a>
         </div>
         <div className="nav-actions">
           <a href="https://app.courtlytennis.com" className="sign-in-link">Sign in</a>
@@ -199,7 +200,6 @@ function Hero() {
             <a href="https://app.courtlytennis.com" className="btn btn-primary">
               Start for free <ArrowRightIcon />
             </a>
-            <a href="#demo" className="btn btn-ghost">Watch demo</a>
           </div>
         </div>
         <div className="hero-visual reveal-on-scroll" style={{ animationDelay: '0.1s' }}>
@@ -294,13 +294,42 @@ function AppScreenshots() {
   );
 }
 
+// ─── About ────────────────────────────────────────────────────────────────────
+
+function AboutSection() {
+  return (
+    <section id="about" className="about-section">
+      <div className="container">
+        <div className="about-inner reveal-on-scroll">
+          <div className="about-content">
+            <p className="section-label">Our Story</p>
+            <h2 className="section-title">Built by coaches, for coaches.</h2>
+            <div className="about-text">
+              <p>
+                Courtly was born out of the frustration of managing a growing tennis academy with nothing but messy spreadsheets and generic scheduling tools.
+              </p>
+              <p>
+                We realized that tennis professionals spend more time on admin than on the court. Our mission is to give you that time back with a platform as precise as your backhand.
+              </p>
+            </div>
+          </div>
+          <div className="about-visual">
+            <div className="about-image-wrapper">
+              <img src={coachImg} alt="Courtly Coach" className="about-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Pricing ──────────────────────────────────────────────────────────────────
 
 const FEATURES = [
-  { text: "Up to 5 Students" },
-  { text: "25 Preset Drills" },
+  { text: "Up to 5 Students", proText: "Unlimited Students" },
+  { text: "25 Preset Drills", proText: "Unlimited Preset Drills" },
   { text: "Basic Calendar view" },
-  { text: "Unlimited Students & Contacts", proOnly: true },
   { text: "Full 250+ Drill Library & Custom", proOnly: true },
   { text: "Recurring Lessons & Waitlist", proOnly: true },
   { text: "Court & Group Management", proOnly: true },
@@ -369,12 +398,12 @@ function Pricing() {
               </div>
             </div>
             <a href="https://app.courtlytennis.com" className="btn btn-primary plan-btn">Get Started</a>
-            <div className="plan-features-header">Includes:</div>
+            <div className="plan-features-header">Everything from Basic and:</div>
             <ul className="plan-features">
               {FEATURES.map((f, i) => (
                 <li key={i}>
                   <GreenCheck />
-                  <span>{f.text}</span>
+                  <span>{f.proText || f.text}</span>
                 </li>
               ))}
             </ul>
@@ -454,6 +483,7 @@ function App() {
         <StatsBar />
         <FeaturesGrid />
         <AppScreenshots />
+        <AboutSection />
         <Pricing />
         <CTASection />
       </main>
